@@ -28,6 +28,99 @@
             text-align: center;
             margin-bottom: 30px;
         }
+        .authors {
+            font-size: 1.4em;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            color: #000;
+        }
+
+        .authors strong {
+            font-weight: bold;
+        }
+        /* 作者超链接样式 */
+        .authors a {
+            color: #007bff; /* 学术经典的蓝色 */
+            text-decoration: none;
+            transition: color 0.2s ease-in-out, border-bottom 0.2s;
+            border-bottom: 1px dashed transparent;
+        }
+
+        .authors a:hover {
+            color: #0056b3;
+            border-bottom: 1px dashed #0056b3; /* 鼠标悬停时出现虚线下划线，显得很精致 */
+        }
+
+        /* Teaser 区域样式 */
+        .teaser-container {
+            max-width: 1000px; /* 通常比正文稍宽一点点，显得大气 */
+            margin: 0 auto 40px auto;
+            text-align: center;
+        }
+
+        .teaser-container img, 
+        .teaser-container video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08); /* 淡淡的高级阴影 */
+            margin-bottom: 15px;
+        }
+
+        .teaser-caption {
+            font-size: 1.05em;
+            color: #555;
+            text-align: justify;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        .affiliations {
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            color: #222;
+        }
+
+        .affiliations sup {
+            margin-right: 2px;
+        }
+
+        .emails {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        .abstract-container {
+            max-width: 900px;
+            margin: 0 auto 50px auto; /* 居中并与下方保持间距 */
+        }
+
+        .tldr-box {
+            background: #e9ecef;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #555;
+            text-align: center;
+            font-size: 1.15em;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .abstract-title {
+            text-align: center;
+            font-size: 1.6em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .abstract-text {
+            text-align: justify;
+            font-size: 1.1em;
+            color: #444;
+            line-height: 1.7;
+        }
 
         h1 {
             font-size: 2em;
@@ -347,8 +440,44 @@
 <body>
     <div class="container">
         <header>
-            <h1>VibeFlow: Versatile Video Chroma-Lux Editing through <br> Disentangled Self-Supervised Learning</h1>
+            <h1>VibeFlow: Versatile Video Chroma-Lux Editing through Self-Supervised Learning</h1>
+            <div class="authors">
+                <strong><a href="https://lyf1212.github.io" target="_blank">Yifan Li</a></strong><sup>1</sup> , 
+                <strong><a href="#" target="_blank">Pei Cheng</a></strong><sup>2</sup> , 
+                <strong><a href="#" target="_blank">Bin Fu</a></strong><sup>2</sup> , 
+                <strong><a href="https://williamyang1991.github.io/" target="_blank">Shuai Yang</a></strong><sup>1*</sup> , 
+                <strong><a href="http://39.96.165.147/people/liujiaying.html" target="_blank">Jiaying Liu</a></strong><sup>1</sup>
+            </div>
+            
+            <div class="affiliations">
+                <sup>1</sup>Wangxuan Institute of Computer Technology, Peking University &nbsp;&nbsp;&nbsp;&nbsp; <sup>2</sup>Tencent
+            </div>
+            
+            <div class="emails">
+                liyifan02@stu.pku.edu.cn, peicheng@tencent.com, fubin@gmail.com,<br>
+                {williamyang, liujiaying}@pku.edu.cn
+            </div>
         </header>
+
+
+        <div class="abstract-container">
+            <div class="tldr-box">
+                <strong>TL;DR:</strong> We propose a <b>self-supervised</b> framework for versatile video chroma-lux editing, fundamentally eliminates the need of paired data/expensive training, achieving plausible editing and rich application.
+            </div>
+            
+            <div class="abstract-title">Abstract</div>
+            <div class="abstract-text">
+                Video chroma-lux editing, which aims to modify illumination and color while preserving structural and temporal fidelity, remains a significant challenge. Existing methods typically rely on expensive supervised training with synthetic paired data. This paper proposes VibeFlow, a novel self-supervised framework that unleashes the intrinsic physical understanding of pre-trained video generation models. Instead of learning color and light transitions from scratch, we introduce a disentangled data perturbation pipeline that enforces the model to adaptively recombine structure from source videos and color-illumination cues from reference images, enabling robust disentanglement in a self-supervised manner. Furthermore, to rectify discretization errors inherent in flow-based models, we introduce Residual Velocity Fields alongside a Structural Distortion Consistency Regularization, ensuring rigorous structural preservation and temporal coherence. Our framework eliminates the need for costly training resources and generalizes in a zero-shot manner to diverse applications, including video relighting, recoloring, low-light enhancement, day-night translation, and object-specific color editing. Extensive experiments demonstrate that VibeFlow achieves impressive visual quality with significantly reduced computational overhead.
+            </div>
+        </div>
+
+        <div class="teaser-container">
+            <img src="assets/pipeline.png" alt="VibeFlow Teaser">
+            
+            <div class="teaser-caption">
+                <strong>Overall framework of our VibeFlow.</strong>  We propose a self-supervised training scheme with <b>Structure/Chroma-lux data perturbation pipeline</b> to finetune a video-to-video generation model using LoRA. Without any paired or rendered data.
+            </div>
+        </div>
 
         <h3>Notes: </h3>
         <h3>- Recommended in Edge or Chrome browsers.</h3>
